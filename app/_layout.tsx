@@ -1,10 +1,17 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import MainScreen from '@/app/screens/MainScreen';
+import SettingScreen from '@/app/screens/SettingScreen';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const Drawer = createDrawerNavigator();
+
+const queryClient = new QueryClient();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -18,12 +25,21 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
+        <Drawer.Navigator
+          screenOptions={{
+            drawerPosition: 'right',
+            drawerType: 'front',
+            headerShown: false,
+            // drawerStyle
+          }}
+        >
+          <Drawer.Screen name="Home" component={MainScreen} />
+          <Drawer.Screen name="Setting" component={SettingScreen} />
+        </Drawer.Navigator>
+        <StatusBar style="auto" />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
