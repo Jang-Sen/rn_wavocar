@@ -1,5 +1,5 @@
 import React from 'react';
-import { Block, Text } from '@/components';
+import { Block, Text } from '@/components/base';
 import { FlatList } from 'react-native';
 import MainImageView from '@/components/main/MainImageView';
 import styles from '@/assets/styles/mainView.styles';

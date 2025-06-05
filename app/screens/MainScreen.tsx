@@ -1,17 +1,19 @@
 import React, { useMemo, useState } from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
 import { theme } from '@/constants';
-import { Block, Text } from '@/components';
-import { useCarList } from '@/hooks/useCarList';
+import { Block, Text } from '@/components/base';
+import { useCarList } from '@/hooks/cars/useCarList';
 import MainCardView from '@/components/main/MainCardView';
 import { useNavigation } from 'expo-router';
-import { getHeaderMenus } from '@/constants/HeaderButton';
-import Button from '@/components/Button';
-import { Image } from 'expo-image';
-import MainScaleView from '@/components/main/MainScaleView';
+import HeaderMenus from '@/constants/Header';
+import MainFuelView from '@/components/main/MainFuelView';
 import styles from '@/assets/styles/main.styles';
+import AccommodationSearch from '@/components/Accommodation/AccommodationSearch';
+import AccommodationCardView from '@/components/Accommodation/AccommodationCardView';
 
 const MainScreen: React.FC = () => {
+  const [fuel, setFuel] = useState<string | undefined>();
+
   const { data: cars, isLoading, isError, error } = useCarList({ page: 1, take: 10 });
 
   const navigation = useNavigation();
@@ -40,48 +42,8 @@ const MainScreen: React.FC = () => {
 
   return (
     <Block style={{ marginTop: 50 }}>
-      <Block flex row center space={'between'} style={styles.header}>
-        <Text h1 bold color={theme.colors.gray}>
-          WAVOCAR
-        </Text>
+      <HeaderMenus title="WAVOCAR" />
 
-        <Block row right>
-          {getHeaderMenus().map((menu, index) => (
-            <Button key={index} style={styles.button} onPress={menu.link}>
-              <Image source={menu.icon} style={{ width: 24, height: 24, resizeMode: 'contain' }} />
-            </Button>
-          ))}
-          {/*{getHeaderMenus.map((menu, index) => (*/}
-          {/*    <Button*/}
-          {/*        key={index}*/}
-          {/*        style={styles.button}*/}
-          {/*        onPress={menu.link}*/}
-          {/*    >*/}
-          {/*        <Image*/}
-          {/*            source={menu.icon}*/}
-          {/*            style={{width: 24, height: 24, resizeMode: 'contain'}}*/}
-          {/*        />*/}
-          {/*    </Button>*/}
-          {/*))}*/}
-
-          {/*<Button style={styles.button}>*/}
-          {/*    <Image*/}
-          {/*        source={bell}*/}
-          {/*        style={{width: 24, height: 24, resizeMode: 'contain'}}*/}
-          {/*    />*/}
-          {/*</Button>*/}
-
-          {/*<Button*/}
-          {/*    style={styles.button}*/}
-          {/*    onPress={() => navigation.dispatch(DrawerActions.openDrawer())}*/}
-          {/*>*/}
-          {/*    <Image*/}
-          {/*        source={hambuger}*/}
-          {/*        style={{width: 24, height: 24, resizeMode: 'contain'}}*/}
-          {/*    />*/}
-          {/*</Button>*/}
-        </Block>
-      </Block>
       <Block flex row style={styles.tabs}>
         {tabs.map(tab => renderTab(tab))}
       </Block>
@@ -94,7 +56,7 @@ const MainScreen: React.FC = () => {
           {cars?.data && (
             <MainCardView cars={cars?.data} title={'새 차를 빌리고 싶을 땐, 신차장기플랜!'} />
           )}
-          <MainScaleView title={'한 번쯤 타보고 싶던 그 차'} />
+          <MainFuelView title={'한 번쯤 타보고 싶던 그 차'} activeFuel={fuel} setFuel={setFuel} />
           {/*{renderRecommended()}*/}
           {/*{renderRecommended()}*/}
         </ScrollView>
@@ -129,7 +91,15 @@ const MainScreen: React.FC = () => {
         //     </Block>
         // </ScrollView>
       )}
-      {active === '숙박' && <Text h1>숙박</Text>}
+      {active === '숙박' && (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: theme.sizes.base }}
+        >
+          <AccommodationSearch />
+          <AccommodationCardView />
+        </ScrollView>
+      )}
     </Block>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { theme, theme2 } from '@/constants';
 import { Image } from 'expo-image';
-import { Block, Text } from '@/components';
+import { Block, Text } from '@/components/base';
 import { FontAwesome } from '@expo/vector-icons';
 import styles from '@/assets/styles/mainView.styles';
 

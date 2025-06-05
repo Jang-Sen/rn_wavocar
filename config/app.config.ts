@@ -1,9 +1,9 @@
 export type AppConfig = {
-    apiPrefix: string;
+  apiPrefix: string;
 };
 
 const appConfig: AppConfig = {
-    apiPrefix: 'http://192.168.35.45:81/api/v1',
+  apiPrefix: 'http://192.168.35.114:81/api/v1',
 };
 
 export default appConfig;
