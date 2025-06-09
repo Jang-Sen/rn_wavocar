@@ -11,6 +11,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: theme.sizes.base,
     marginVertical: theme.sizes.base,
   },
+  sideHeader: {
+    paddingHorizontal: theme.sizes.base / 2,
+    marginVertical: theme.sizes.base,
+  },
   tabs: {
     borderBottomColor: theme.colors.gray2,
     borderBottomWidth: StyleSheet.hairlineWidth,

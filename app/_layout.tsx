@@ -1,17 +1,59 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { DarkTheme, DefaultTheme, ThemeProvider, useNavigation } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
+import { Pressable } from 'react-native';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MainScreen from '@/app/screens/MainScreen';
 import SettingScreen from '@/app/screens/SettingScreen';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import HistoryScreen from '@/app/screens/HistoryScreen';
+import CustomDrawerContent from '@/components/auth/CustomDrawerContent';
+import CouponScreen from '@/app/screens/CouponScreen';
+import EventScreen from '@/app/screens/EventScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import CarDetailScreen from '@/app/screens/CarDetailScreen';
+import { Text } from '@/components/base';
+import CarList from '@/components/car/CarList';
 
+const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const queryClient = new QueryClient();
+
+export default function HomeStackNavigator() {
+  const navigation = useNavigation();
+
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Home" component={MainScreen} />
+      <Stack.Screen
+        name="Details"
+        component={CarDetailScreen}
+        options={{
+          headerShown: true,
+          presentation: 'fullScreenModal',
+          headerRight: () => (
+            <Pressable
+              onPress={() => {
+                console.log(navigation.canGoBack());
+                if (navigation.canGoBack()) {
+                  navigation.goBack();
+                } else {
+                  navigation.navigate('Home'); // 혹은 원하는 초기 화면
+                }
+              }}
+            >
+              <Text style={{ fontSize: 18 }}>✕</Text>
+            </Pressable>
+          ),
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -26,7 +68,7 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Drawer.Navigator
           screenOptions={{
             drawerPosition: 'right',
@@ -34,9 +76,18 @@ export default function RootLayout() {
             headerShown: false,
             // drawerStyle
           }}
+          drawerContent={props => <CustomDrawerContent {...props} />}
         >
-          <Drawer.Screen name="Home" component={MainScreen} />
-          <Drawer.Screen name="Setting" component={SettingScreen} />
+          <Drawer.Screen name="Home" component={HomeStackNavigator} />
+          <Drawer.Screen name="infinite" options={{ title: '무한 스크롤' }} component={CarList} />
+          <Drawer.Screen
+            name="history"
+            options={{ title: '이용 내역' }}
+            component={HistoryScreen}
+          />
+          <Drawer.Screen name="coupon" options={{ title: '쿠폰' }} component={CouponScreen} />
+          <Drawer.Screen name="event" options={{ title: '이벤트/혜택' }} component={EventScreen} />
+          <Drawer.Screen name="setting" options={{ title: '설정' }} component={SettingScreen} />
         </Drawer.Navigator>
         <StatusBar style="auto" />
       </ThemeProvider>

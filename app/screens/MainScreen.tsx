@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
 import { theme } from '@/constants';
 import { Block, Text } from '@/components/base';
-import { useCarList } from '@/hooks/cars/useCarList';
 import MainCardView from '@/components/main/MainCardView';
 import { useNavigation } from 'expo-router';
 import HeaderMenus from '@/constants/Header';
@@ -10,11 +9,14 @@ import MainFuelView from '@/components/main/MainFuelView';
 import styles from '@/assets/styles/main.styles';
 import AccommodationSearch from '@/components/Accommodation/AccommodationSearch';
 import AccommodationCardView from '@/components/Accommodation/AccommodationCardView';
+import { useCarList } from '@/hooks/cars/useCarList';
 
 const MainScreen: React.FC = () => {
   const [fuel, setFuel] = useState<string | undefined>();
 
-  const { data: cars, isLoading, isError, error } = useCarList({ page: 1, take: 10 });
+  const { data: cars, isLoading, isError, error } = useCarList();
+
+  // const { data: cars, isLoading, error } = useInfiniteCarList({ page: 1, take: 10 });
 
   const navigation = useNavigation();
 
@@ -60,6 +62,7 @@ const MainScreen: React.FC = () => {
           {/*{renderRecommended()}*/}
           {/*{renderRecommended()}*/}
         </ScrollView>
+
         // <ScrollView
         //     showsVerticalScrollIndicator={false}
         //     style={{paddingVertical: theme.sizes.base * 2}}

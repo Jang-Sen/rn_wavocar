@@ -1,16 +1,15 @@
-import axiosBase from './axios/AxiosBase';
-import {Car, CarListParams, CarListResponse} from "@/@types/car";
+import { fetchCarDetail, fetchCarList, fetchInfiniteCarList } from '@/api/car';
 
-export const getCarList = async (params?: CarListParams): Promise<Car[]> => {
-    const {data} = await axiosBase.get<CarListResponse>('/car/findAll', {
-        params,
-    });
-
-    return data?.body;
+const carService = {
+  getCarList: async () => {
+    return await fetchCarList();
+  },
+  getInfiniteCarList: async (params: { page: number; take: number }) => {
+    return await fetchInfiniteCarList(params);
+  },
+  getCarDetail: async (id: string) => {
+    return await fetchCarDetail(id);
+  },
 };
 
-export const getCarDetail = async (id: string): Promise<Car> => {
-    const {data} = await axiosBase.get<Car>(`/car/find/${id}`);
-
-    return data?.body;
-};
+export default carService;

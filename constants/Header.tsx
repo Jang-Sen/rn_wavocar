@@ -13,7 +13,7 @@ import { theme } from '@/constants/index';
 const getHeaderMenus = () => {
   const navigation = useNavigation();
   return [
-    { icon: ticket, link: null },
+    { icon: ticket, link: () => navigation.navigate('coupon') },
     { icon: bell, link: null },
     {
       icon: hambuger,
