@@ -24,16 +24,17 @@ const MainFuelImageView: React.FC<Props> = ({ item, index }) => {
       ]}
     >
       <Block flex row style={styles.recommendationHeader}>
-        <Image style={[styles.recommendationImage]} source={item.icon} />
+        <Block style={[styles.recommendationImage, { alignItems: 'flex-end' }]}>
+          <Image source={item.icon} style={{ width: 84, height: 84, marginTop: 10 }} />
+        </Block>
+
         <Block flex row style={styles.recommendationOptions}>
-          {/*<View style={[styles.flex, styles.row, styles.recommendationOptions]}>*/}
           <Text style={styles.recommendationTemp}></Text>
           <FontAwesome
             name={item.saved ? 'bookmark' : 'bookmark-o'}
             color={theme.colors.white}
             size={theme.sizes.font * 1.25}
           />
-          {/*</View>*/}
         </Block>
       </Block>
 

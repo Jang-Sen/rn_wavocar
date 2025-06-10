@@ -10,6 +10,7 @@ import styles from '@/assets/styles/main.styles';
 import AccommodationSearch from '@/components/Accommodation/AccommodationSearch';
 import AccommodationCardView from '@/components/Accommodation/AccommodationCardView';
 import { useCarList } from '@/hooks/cars/useCarList';
+import MainView from '@/components/main/MainView';
 
 const MainScreen: React.FC = () => {
   const [fuel, setFuel] = useState<string | undefined>();
@@ -54,6 +55,7 @@ const MainScreen: React.FC = () => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: theme.sizes.base }}
         >
+          <MainView />
           {/*{renderDestinations()}*/}
           {cars?.data && (
             <MainCardView cars={cars?.data} title={'새 차를 빌리고 싶을 땐, 신차장기플랜!'} />

@@ -109,9 +109,34 @@ const MainImageView: React.FC<Props> = ({ item, index, isLasted }) => {
               </Text>
               원~
             </Text>
-            <Text color={theme.colors.gray} size={theme.sizes.caption}>
-              #{item.scale} #{item.grade}
-            </Text>
+            <Block row style={{ gap: theme.sizes.radius / 2 }}>
+              <Text
+                color={theme.colors.black}
+                size={theme.sizes.caption}
+                style={{
+                  backgroundColor: theme.colors.whiteGray,
+                  paddingHorizontal: theme.sizes.base / 2,
+                  paddingVertical: theme.sizes.base / 4,
+                  borderRadius: theme.sizes.radius,
+                  alignSelf: 'flex-start',
+                }}
+              >
+                # {item.scale}
+              </Text>
+              <Text
+                color={theme.colors.black}
+                size={theme.sizes.caption}
+                style={{
+                  backgroundColor: theme.colors.whiteGray,
+                  paddingHorizontal: theme.sizes.base / 2,
+                  paddingVertical: theme.sizes.base / 4,
+                  borderRadius: theme.sizes.radius,
+                  alignSelf: 'flex-start',
+                }}
+              >
+                # {item.grade.slice(0, 4)}
+              </Text>
+            </Block>
             {/*<Text style={{ color: theme2.colors.caption }}>{item.description.slice(0, 50)}</Text>*/}
             <Block
               row

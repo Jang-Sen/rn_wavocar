@@ -136,6 +136,21 @@ const styles = StyleSheet.create({
   flex: {
     flex: 0,
   },
+  view: {
+    width: (width - theme.sizes.base * 3) / 2,
+    height: theme.sizes.base * 8,
+    paddingHorizontal: theme.sizes.base,
+  },
+  view2: {
+    width: (width - theme.sizes.base * 3) / 3,
+    height: theme.sizes.base * 6.25,
+    paddingHorizontal: theme.sizes.base,
+  },
+  view3: {
+    width: (width - theme.sizes.base * 3) / 3,
+    height: theme.sizes.base * 5,
+    paddingHorizontal: theme.sizes.base,
+  },
 });
 
 export default styles;
