@@ -2,7 +2,7 @@ import React from 'react';
 import { Block, Text } from '@/components/base';
 import { FlatList } from 'react-native';
 import MainImageView from '@/components/main/MainImageView';
-import styles from '@/assets/styles/mainView.styles';
+import styles from '@/assets/styles/view.styles';
 
 type Props = {
   cars: any[];

@@ -12,7 +12,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import { theme, theme2 } from '@/constants';
+import { theme } from '@/constants';
 import { FontAwesome, Octicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 
@@ -126,7 +126,7 @@ const CarDetailScreen: React.FC = () => {
       <ImageBackground
         source={{ uri: item.preview }}
         style={[styles.flex, styles.destination, styles.shadow]}
-        imageStyle={{ borderRadius: theme2.sizes.radius }}
+        imageStyle={{ borderRadius: theme.sizes.caption }}
       >
         <Block row style={{ justifyContent: 'space-between' }}>
           <Block flex>
@@ -137,7 +137,7 @@ const CarDetailScreen: React.FC = () => {
               {item.user.name}
             </Text>
             <Text color={theme.colors.white}>
-              <Octicons name="location" size={theme2.sizes.font * 0.8} color={theme.colors.white} />
+              <Octicons name="location" size={theme.sizes.font * 0.8} color={theme.colors.white} />
               <Text color={theme.colors.white}>{item.location}</Text>
             </Text>
           </Block>
@@ -247,10 +247,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   header: {
-    backgroundColor: theme2.colors.white,
-    paddingHorizontal: theme2.sizes.padding,
-    paddingTop: theme2.sizes.padding * 1.33,
-    paddingBottom: theme2.sizes.padding * 0.66,
+    backgroundColor: theme.colors.white,
+    paddingHorizontal: theme.sizes.margin,
+    paddingTop: theme.sizes.margin * 1.33,
+    paddingBottom: theme.sizes.margin * 0.66,
     justifyContent: 'space-between',
     alignItems: 'center',
   },
@@ -261,28 +261,28 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   destination: {
-    width: width - theme2.sizes.padding * 2,
+    width: width - theme.sizes.margin * 2,
     height: width * 0.6,
-    marginHorizontal: theme2.sizes.margin,
-    paddingHorizontal: theme2.sizes.padding - 2,
-    paddingVertical: theme2.sizes.padding * 0.66,
-    borderRadius: theme2.sizes.radius,
+    marginHorizontal: theme.sizes.margin,
+    paddingHorizontal: theme.sizes.margin - 2,
+    paddingVertical: theme.sizes.margin * 0.66,
+    borderRadius: theme.sizes.caption,
   },
   destinationInfo: {
     position: 'absolute',
-    borderRadius: theme2.sizes.radius,
-    paddingHorizontal: theme2.sizes.padding,
-    paddingVertical: theme2.sizes.padding / 2,
+    borderRadius: theme.sizes.caption,
+    paddingHorizontal: theme.sizes.margin,
+    paddingVertical: theme.sizes.margin / 2,
     bottom: 20,
-    left: (width - theme2.sizes.padding * 4) / (Platform.OS === 'ios' ? 3.2 : 3),
-    backgroundColor: theme2.colors.white,
-    width: width - theme2.sizes.padding * 4,
+    left: (width - theme.sizes.margin * 4) / (Platform.OS === 'ios' ? 3.2 : 3),
+    backgroundColor: theme.colors.white,
+    width: width - theme.sizes.margin * 4,
   },
   recommended: {},
   recommendedHeader: {
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-    paddingHorizontal: theme2.sizes.padding,
+    paddingHorizontal: theme.sizes.margin,
   },
   recommendedList: {},
   recommendation: {
@@ -295,8 +295,8 @@ const styles = StyleSheet.create({
   },
   recommendationHeader: {
     overflow: 'hidden',
-    borderTopRightRadius: theme2.sizes.radius,
-    borderTopLeftRadius: theme2.sizes.radius,
+    borderTopRightRadius: theme.sizes.radius * 2,
+    borderTopLeftRadius: theme.sizes.radius * 2,
   },
   recommendationOptions: {
     alignItems: 'center',
@@ -313,17 +313,17 @@ const styles = StyleSheet.create({
     marginVertical: 36 / 5,
   },
   recommendationImage: {
-    width: (width - theme2.sizes.padding * 2) / 2,
-    height: (width - theme2.sizes.padding * 2) / 2,
+    width: (width - theme.sizes.margin * 2) / 2,
+    height: (width - theme.sizes.margin * 2) / 2,
   },
   avatar: {
-    width: theme2.sizes.padding,
-    height: theme2.sizes.padding,
-    borderRadius: theme2.sizes.padding / 2,
+    width: theme.sizes.margin,
+    height: theme.sizes.margin,
+    borderRadius: theme.sizes.margin / 2,
   },
   rating: {
-    fontSize: theme2.sizes.font * 2,
-    color: theme2.colors.white,
+    fontSize: theme.sizes.font * 2,
+    color: theme.colors.white,
     fontWeight: 'bold',
   },
   shadow: {
@@ -343,13 +343,13 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginHorizontal: 6,
     marginBottom: theme.sizes.padding,
-    backgroundColor: theme2.colors.gray,
+    backgroundColor: theme.colors.whiteGray,
     borderColor: 'transparent',
   },
   activeDot: {
     width: 12.5,
     height: 12.5,
     borderRadius: 6.25,
-    borderColor: theme2.colors.active,
+    borderColor: theme.colors.active,
   },
 });

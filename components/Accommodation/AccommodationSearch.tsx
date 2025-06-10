@@ -9,7 +9,7 @@ const AccommodationSearch: React.FC = () => {
       <TextInput
         placeholder="지역이나 숙소 이름을 찾아보세요."
         style={{
-          backgroundColor: theme.colors.gray2,
+          backgroundColor: theme.colors.whiteGray,
           paddingHorizontal: theme.sizes.base,
           paddingVertical: theme.sizes.base,
           borderRadius: theme.sizes.radius,

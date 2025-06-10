@@ -1,9 +1,9 @@
 import React from 'react';
-import { theme, theme2 } from '@/constants';
+import { theme } from '@/constants';
 import { Image } from 'expo-image';
 import { Block, Text } from '@/components/base';
 import { FontAwesome } from '@expo/vector-icons';
-import styles from '@/assets/styles/mainView.styles';
+import styles from '@/assets/styles/view.styles';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from 'expo-router';
 
@@ -27,8 +27,8 @@ const MainImageView: React.FC<Props> = ({ item, index, isLasted }) => {
         style={[
           styles.recommendation,
           styles.shadow,
-          index === 0 && { marginLeft: theme2.sizes.base },
-          isLasted && { marginRight: theme2.sizes.base },
+          index === 0 && { marginLeft: theme.sizes.base },
+          isLasted && { marginRight: theme.sizes.base },
         ]}
       >
         {/*// <View*/}
@@ -37,8 +37,8 @@ const MainImageView: React.FC<Props> = ({ item, index, isLasted }) => {
         {/*//     styles.column,*/}
         {/*//     styles.recommendation,*/}
         {/*//     styles.shadow,*/}
-        {/*//     index === 0 && { marginLeft: theme2.sizes.margin },*/}
-        {/*//     isLasted && { marginRight: theme2.sizes.margin / 2 },*/}
+        {/*//     index === 0 && { marginLeft: theme.sizes.margin },*/}
+        {/*//     isLasted && { marginRight: theme.sizes.margin / 2 },*/}
         {/*//   ]}*/}
         {/*// >*/}
         <>
@@ -55,8 +55,8 @@ const MainImageView: React.FC<Props> = ({ item, index, isLasted }) => {
               <Text style={styles.recommendationTemp}></Text>
               <FontAwesome
                 name={item.saved ? 'bookmark' : 'bookmark-o'}
-                color={theme2.colors.white}
-                size={theme2.sizes.font * 1.25}
+                color={theme.colors.white}
+                size={theme.sizes.font * 1.25}
               />
               {/*</View>*/}
             </Block>
@@ -70,7 +70,7 @@ const MainImageView: React.FC<Props> = ({ item, index, isLasted }) => {
               styles.shadow,
               {
                 justifyContent: 'space-evenly',
-                padding: theme2.sizes.padding / 2,
+                padding: theme.sizes.margin / 2,
               },
             ]}
           >
@@ -81,7 +81,7 @@ const MainImageView: React.FC<Props> = ({ item, index, isLasted }) => {
             {/*    styles.shadow,*/}
             {/*    {*/}
             {/*      justifyContent: 'space-evenly',*/}
-            {/*      padding: theme2.sizes.padding / 2,*/}
+            {/*      padding: theme.sizes.margin / 2,*/}
             {/*    },*/}
             {/*  ]}*/}
             {/*>*/}
@@ -96,7 +96,7 @@ const MainImageView: React.FC<Props> = ({ item, index, isLasted }) => {
             </Text>
             <Text
               style={{
-                paddingBottom: theme2.sizes.radius,
+                paddingBottom: theme.sizes.radius * 2,
               }}
               size={theme.sizes.font}
               color={theme.colors.carPrice}
@@ -118,7 +118,7 @@ const MainImageView: React.FC<Props> = ({ item, index, isLasted }) => {
               style={{
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                marginTop: theme2.sizes.margin / 2.5,
+                marginTop: theme.sizes.margin / 2.5,
               }}
             ></Block>
 

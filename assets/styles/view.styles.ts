@@ -1,5 +1,5 @@
 import { Dimensions, Platform, StyleSheet } from 'react-native';
-import { theme, theme2 } from '@/constants';
+import { theme } from '@/constants';
 
 const { width, height } = Dimensions.get('window');
 
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: theme.sizes.base,
   },
   tabs: {
-    borderBottomColor: theme.colors.gray2,
+    borderBottomColor: theme.colors.whiteGray,
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginVertical: theme.sizes.base * 2,
     marginHorizontal: theme.sizes.base * 1.2,
@@ -37,22 +37,22 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   destination: {
-    width: width - theme2.sizes.padding * 2,
+    width: width - theme.sizes.margin * 2,
     height: width * 0.6,
-    marginHorizontal: theme2.sizes.margin,
-    paddingHorizontal: theme2.sizes.padding - 2,
-    paddingVertical: theme2.sizes.padding * 0.66,
-    borderRadius: theme2.sizes.radius,
+    marginHorizontal: theme.sizes.margin,
+    paddingHorizontal: theme.sizes.margin - 2,
+    paddingVertical: theme.sizes.margin * 0.66,
+    borderRadius: theme.sizes.radius * 2,
   },
   destinationInfo: {
     position: 'absolute',
-    borderRadius: theme2.sizes.radius,
-    paddingHorizontal: theme2.sizes.padding,
-    paddingVertical: theme2.sizes.padding / 2,
+    borderRadius: theme.sizes.radius * 2,
+    paddingHorizontal: theme.sizes.margin,
+    paddingVertical: theme.sizes.margin / 2,
     bottom: 20,
-    left: (width - theme2.sizes.padding * 4) / (Platform.OS === 'ios' ? 3.2 : 3),
-    backgroundColor: theme2.colors.white,
-    width: width - theme2.sizes.padding * 4,
+    left: (width - theme.sizes.margin * 4) / (Platform.OS === 'ios' ? 3.2 : 3),
+    backgroundColor: theme.colors.white,
+    width: width - theme.sizes.margin * 4,
   },
   recommended: {},
   recommendedHeader: {
@@ -62,48 +62,48 @@ const styles = StyleSheet.create({
   },
   recommendedList: {},
   recommendation: {
-    width: (width - theme2.sizes.padding * 2) / 2,
+    width: (width - theme.sizes.margin * 2) / 2,
     marginHorizontal: 8,
-    backgroundColor: theme2.colors.white,
+    backgroundColor: theme.colors.white,
     overflow: 'hidden',
-    borderRadius: theme2.sizes.radius,
-    marginVertical: theme2.sizes.margin * 0.5,
+    borderRadius: theme.sizes.radius * 2,
+    marginVertical: theme.sizes.margin * 0.5,
   },
   recommendationHeader: {
     overflow: 'hidden',
-    borderTopRightRadius: theme2.sizes.radius,
-    borderTopLeftRadius: theme2.sizes.radius,
+    borderTopRightRadius: theme.sizes.radius * 2,
+    borderTopLeftRadius: theme.sizes.radius * 2,
   },
   recommendationOptions: {
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: theme2.sizes.padding / 2,
+    padding: theme.sizes.margin / 2,
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
   },
   recommendationTemp: {
-    fontSize: theme2.sizes.font / 1.25,
-    color: theme2.colors.black,
-    marginVertical: theme2.sizes.margin / 5,
+    fontSize: theme.sizes.font / 1.25,
+    color: theme.colors.dark,
+    marginVertical: theme.sizes.margin / 5,
   },
   recommendationImage: {
-    width: (width - theme2.sizes.padding * 2) / 2,
-    height: (width - theme2.sizes.padding * 2) / 2,
+    width: (width - theme.sizes.margin * 2) / 2,
+    height: (width - theme.sizes.margin * 2) / 2,
   },
   avatar: {
-    width: theme2.sizes.padding,
-    height: theme2.sizes.padding,
-    borderRadius: theme2.sizes.padding / 2,
+    width: theme.sizes.margin,
+    height: theme.sizes.margin,
+    borderRadius: theme.sizes.margin / 2,
   },
   rating: {
-    fontSize: theme2.sizes.font * 2,
-    color: theme2.colors.white,
+    fontSize: theme.sizes.font * 2,
+    color: theme.colors.white,
     fontWeight: 'bold',
   },
   shadow: {
-    shadowColor: theme2.colors.black,
+    shadowColor: theme.colors.dark,
     shadowOffset: {
       width: 0,
       height: 6,
@@ -118,14 +118,14 @@ const styles = StyleSheet.create({
     borderWidth: 2.5,
     borderRadius: 5,
     marginHorizontal: 6,
-    backgroundColor: theme2.colors.gray,
+    backgroundColor: theme.colors.whiteGray,
     borderColor: 'transparent',
   },
   activeDot: {
     width: 12.5,
     height: 12.5,
     borderRadius: 6.25,
-    borderColor: theme2.colors.active,
+    borderColor: theme.colors.active,
   },
   column: {
     flexDirection: 'column',

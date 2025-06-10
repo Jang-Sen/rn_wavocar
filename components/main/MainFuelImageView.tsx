@@ -1,7 +1,7 @@
 import React from 'react';
 import { Block, Text } from '@/components/base';
-import styles from '@/assets/styles/mainView.styles';
-import { theme, theme2 } from '@/constants';
+import styles from '@/assets/styles/view.styles';
+import { theme } from '@/constants';
 import { Image } from 'expo-image';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -19,8 +19,8 @@ const MainFuelImageView: React.FC<Props> = ({ item, index }) => {
       style={[
         styles.recommendation,
         styles.shadow,
-        index === 0 && { marginLeft: theme2.sizes.base },
-        // isLasted && { marginRight: theme2.sizes.base },
+        index === 0 && { marginLeft: theme.sizes.base },
+        // isLasted && { marginRight: theme.sizes.base },
       ]}
     >
       <Block flex row style={styles.recommendationHeader}>
@@ -30,8 +30,8 @@ const MainFuelImageView: React.FC<Props> = ({ item, index }) => {
           <Text style={styles.recommendationTemp}></Text>
           <FontAwesome
             name={item.saved ? 'bookmark' : 'bookmark-o'}
-            color={theme2.colors.white}
-            size={theme2.sizes.font * 1.25}
+            color={theme.colors.white}
+            size={theme.sizes.font * 1.25}
           />
           {/*</View>*/}
         </Block>
@@ -44,7 +44,7 @@ const MainFuelImageView: React.FC<Props> = ({ item, index }) => {
           styles.shadow,
           {
             justifyContent: 'space-evenly',
-            padding: theme2.sizes.padding / 2,
+            padding: theme.sizes.margin / 2,
           },
         ]}
       >

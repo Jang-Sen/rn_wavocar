@@ -31,7 +31,7 @@ const AccommodationCardView: React.FC = () => {
               paddingVertical: 10,
               marginRight: 8,
               borderRadius: 20,
-              backgroundColor: theme.colors.gray2,
+              backgroundColor: theme.colors.whiteGray,
               alignItems: 'center',
               justifyContent: 'center',
             }}
@@ -52,7 +52,7 @@ const AccommodationCardView: React.FC = () => {
               paddingVertical: 10,
               marginRight: 8,
               borderRadius: 20,
-              backgroundColor: theme.colors.gray2,
+              backgroundColor: theme.colors.whiteGray,
               alignItems: 'center',
               justifyContent: 'center',
             }}

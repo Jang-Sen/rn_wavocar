@@ -3,19 +3,22 @@ const colors = {
   primary: '#0a3fc4',
   secondary: '#2BDA8E',
   tertiary: '#FFE358',
+  dark: '#000',
   black: '#323643',
   white: '#FFFFFF',
   gray: '#9DA3B4',
-  gray2: '#C5CCD6',
+  whiteGray: '#C5CCD6',
+  active: '#007BFA',
   carPrice: '#0062a6',
 };
 
 const sizes = {
   // global sizes
+  margin: 36,
+  padding: 25,
   base: 16,
   font: 14,
   radius: 6,
-  padding: 25,
 
   // font sizes
   h1: 26,
