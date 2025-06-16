@@ -28,7 +28,8 @@ type Props = {
 
 const HeaderMenus: React.FC<Props> = ({ title }) => {
   return (
-    <Block flex row center space={'between'} style={styles.header}>
+    // <Block row center space={'between'} style={styles.header, {backgroundColor: 'red'}} >
+    <Block flex row center style={styles.header}>
       <Text h1 bold color={theme.colors.gray}>
         {title}
       </Text>

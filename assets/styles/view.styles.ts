@@ -22,9 +22,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
   },
   category: {
-    minWidth: (width - theme.sizes.padding * 2.4 - theme.sizes.base) / 2,
-    maxWidth: (width - theme.sizes.padding * 2.4 - theme.sizes.base) / 2,
-    maxHeight: (width - theme.sizes.padding * 2.4 - theme.sizes.base) / 2,
+    width: width / 3.5,
+    // minWidth: (theme.sizes.padding * 2.4 - theme.sizes.base) / 3,
+    // maxWidth: (width - theme.sizes.padding * 2.4 - theme.sizes.base) / 2,
+    // maxHeight: (width - theme.sizes.padding * 2.4 - theme.sizes.base) / 2,
   },
   categories: {
     flexWrap: 'wrap',
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
   },
   view3: {
     width: (width - theme.sizes.base * 3) / 3,
-    height: theme.sizes.base * 5,
+    height: theme.sizes.padding * 4,
     paddingHorizontal: theme.sizes.base,
   },
 });

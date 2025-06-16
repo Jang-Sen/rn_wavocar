@@ -6,7 +6,6 @@ import { Pressable } from 'react-native';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import MainScreen from '@/app/screens/MainScreen';
 import SettingScreen from '@/app/screens/SettingScreen';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import HistoryScreen from '@/app/screens/HistoryScreen';
@@ -17,6 +16,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CarDetailScreen from '@/app/screens/CarDetailScreen';
 import { Text } from '@/components/base';
 import CarList from '@/components/car/CarList';
+import LoginScreen from '@/app/screens/auth/LoginScreen';
+import RegisterScreen from '@/app/screens/auth/RegisterScreen';
+import IntroScreen from '@/app/screens/IntroScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -28,7 +30,7 @@ export default function HomeStackNavigator() {
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Home" component={MainScreen} />
+      <Stack.Screen name="Home" component={IntroScreen} />
       <Stack.Screen
         name="Details"
         component={CarDetailScreen}
@@ -79,6 +81,14 @@ export default function RootLayout() {
           drawerContent={props => <CustomDrawerContent {...props} />}
         >
           <Drawer.Screen name="Home" component={HomeStackNavigator} />
+          <Drawer.Screen name="login" options={{ title: '로그인' }} component={LoginScreen} />
+          <Drawer.Screen
+            name="register"
+            options={{
+              title: '약관 동의',
+            }}
+            component={RegisterScreen}
+          />
           <Drawer.Screen name="infinite" options={{ title: '무한 스크롤' }} component={CarList} />
           <Drawer.Screen
             name="history"

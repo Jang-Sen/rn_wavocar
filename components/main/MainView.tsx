@@ -1,19 +1,22 @@
 import React from 'react';
-import { Block, Card, Text } from '@/components/base';
-import styles from '@/assets/styles/view.styles';
+import { Block } from '@/components/base';
 import { theme } from '@/constants';
 import three from '@/assets/icons/Button-Go-Forward-30--Streamline-Plump.png';
 import newCar from '@/assets/icons/Ai-Vehicle-Spark-2--Streamline-Plump.png';
 import oneWay from '@/assets/icons/Swap-Car-Driving-App--Streamline-Plump.png';
-import goWavocarZone from '@/assets/icons/Car-Alert--Streamline-Plump.png';
-import want from '@/assets/icons/Car-Crash--Streamline-Plump.png';
-import airport from '@/assets/icons/Departure-Time--Streamline-Plump.png';
-import bicycle from '@/assets/icons/Electric-Bicycle--Streamline-Plump.png';
-import train from '@/assets/icons/Train-Front--Streamline-Plump.png';
-import { Image } from 'expo-image';
+import wavocarZone from '@/assets/icons/Car-Alert--Streamline-Plump.png';
+import want from '@/assets/images/img.png';
+import airport from '@/assets/images/img_1.png';
+import bicycle from '@/assets/images/img_2.png';
+import train from '@/assets/images/img_3.png';
+import { Dimensions, FlatList } from 'react-native';
+import FirstMenuCardView from '@/components/main/FirstMenuCardView';
+import MainMenuCardView from '@/components/main/MainMenuCardView';
+
+const { width, height } = Dimensions.get('window');
 
 const items = [
-  { title: '가지러 가기', description: '가까운 와보카존 찾기', link: null, icon: goWavocarZone },
+  { title: '가지러 가기', description: '가까운 와보카존 찾기', link: null, icon: wavocarZone },
   { title: '여기로 부르기', description: '원하는 차 받기', link: null, icon: want },
 ];
 
@@ -32,73 +35,117 @@ const items3 = [
 const MainView: React.FC = () => {
   return (
     <>
-      <Block row style={{ paddingHorizontal: theme.sizes.base }}>
-        {items.map(item => (
-          <Block>
-            <Block key={item.title}>
-              <Card style={styles.view}>
-                <Text bold title>
-                  {item.title}
-                </Text>
-                <Text semibold color={theme.colors.gray} caption>
-                  {item.description}
-                </Text>
-                <Block style={{ alignItems: 'flex-end', marginTop: 5 }}>
-                  <Image
-                    source={item.icon}
-                    style={{ width: 60, height: 60 }}
-                    resizeMode="contain"
-                  />
-                </Block>
-              </Card>
-            </Block>
-          </Block>
-        ))}
+      <Block flex row style={{ paddingHorizontal: theme.sizes.base }}>
+        <FlatList
+          data={items}
+          keyExtractor={item => item.title}
+          numColumns={2}
+          contentContainerStyle={{
+            paddingVertical: theme.sizes.radius / 2,
+            paddingHorizontal: theme.sizes.radius / 2,
+            // width: width / 1.1,
+            justifyContent: 'space-between',
+          }}
+          columnWrapperStyle={{
+            justifyContent: 'space-between',
+            margin: theme.sizes.caption,
+            // height: height / 5.7,
+          }}
+          showsVerticalScrollIndicator={false}
+          renderItem={FirstMenuCardView}
+        />
+        {/*{items.map((item, index) => (*/}
+        {/*  <Block key={index}>*/}
+        {/*    <Block>*/}
+        {/*      <TouchableOpacity>*/}
+        {/*        <Card style={styles.view}>*/}
+        {/*          <Text bold title>*/}
+        {/*            {item.title}*/}
+        {/*          </Text>*/}
+        {/*          <Text semibold color={theme.colors.gray} caption>*/}
+        {/*            {item.description}*/}
+        {/*          </Text>*/}
+        {/*          <Block style={{ alignItems: 'flex-end', marginTop: 5 }}>*/}
+        {/*            <Image*/}
+        {/*              source={item.icon}*/}
+        {/*              style={{ width: 60, height: 60, resizeMode: 'contain' }}*/}
+        {/*            />*/}
+        {/*          </Block>*/}
+        {/*        </Card>*/}
+        {/*      </TouchableOpacity>*/}
+        {/*    </Block>*/}
+        {/*  </Block>*/}
+        {/*))}*/}
       </Block>
 
       <Block flex row style={{ paddingHorizontal: theme.sizes.base }}>
-        {items2.map(item => (
-          <Block>
-            <Block key={item.title}>
-              <Card style={styles.view2}>
-                <Text bold title>
-                  {item.title}
-                </Text>
-                <Text semibold color={theme.colors.gray} caption>
-                  {item.description}
-                </Text>
-                <Block style={{ alignItems: 'flex-end', marginTop: 3 }}>
-                  <Image
-                    source={item.icon}
-                    style={{ width: 36, height: 36 }}
-                    resizeMode="contain"
-                  />
-                </Block>
-              </Card>
-            </Block>
-          </Block>
-        ))}
+        <FlatList
+          data={items2}
+          keyExtractor={item => item.title}
+          numColumns={4}
+          contentContainerStyle={{
+            paddingVertical: theme.sizes.radius,
+            paddingHorizontal: theme.sizes.radius / 2,
+          }}
+          columnWrapperStyle={{
+            justifyContent: 'space-between',
+          }}
+          showsVerticalScrollIndicator={false}
+          renderItem={data => MainMenuCardView(data.item, true)}
+        />
+        {/*{items2.map((item, index) => (*/}
+        {/*  <Block key={index}>*/}
+        {/*    <Block>*/}
+        {/*      <TouchableOpacity>*/}
+        {/*        <Card style={styles.view2}>*/}
+        {/*          <Text bold title>*/}
+        {/*            {item.title}*/}
+        {/*          </Text>*/}
+        {/*          <Text semibold color={theme.colors.gray} caption>*/}
+        {/*            {item.description}*/}
+        {/*          </Text>*/}
+        {/*          <Block style={{ alignItems: 'flex-end', marginTop: 3 }}>*/}
+        {/*            <Image*/}
+        {/*              source={item.icon}*/}
+        {/*              style={{ width: 36, height: 36, resizeMode: 'contain' }}*/}
+        {/*            />*/}
+        {/*          </Block>*/}
+        {/*        </Card>*/}
+        {/*      </TouchableOpacity>*/}
+        {/*    </Block>*/}
+        {/*  </Block>*/}
+        {/*))}*/}
       </Block>
 
-      <Block flex row style={{ paddingHorizontal: theme.sizes.base }}>
-        {items3.map(item => (
-          <Block>
-            <Block key={item.title}>
-              <Card style={styles.view3}>
-                <Text bold title>
-                  {item.title}
-                </Text>
-                <Block style={{ alignItems: 'flex-end' }}>
-                  <Image
-                    source={item.icon}
-                    style={{ width: 30, height: 30 }}
-                    resizeMode="contain"
-                  />
-                </Block>
-              </Card>
-            </Block>
-          </Block>
-        ))}
+      <Block flex row style={{ paddingHorizontal: theme.sizes.base, marginBottom: 10 }}>
+        <FlatList
+          data={items3}
+          keyExtractor={item => item.title}
+          numColumns={4}
+          contentContainerStyle={{
+            paddingVertical: theme.sizes.radius,
+            paddingHorizontal: theme.sizes.radius / 2,
+          }}
+          columnWrapperStyle={{
+            justifyContent: 'space-between',
+          }}
+          showsVerticalScrollIndicator={false}
+          renderItem={data => MainMenuCardView(data.item, false)}
+        />
+        {/*<FlatList*/}
+        {/*  data={items3}*/}
+        {/*  keyExtractor={item => item.title}*/}
+        {/*  numColumns={4}*/}
+        {/*  contentContainerStyle={{*/}
+        {/*    paddingVertical: theme.sizes.radius,*/}
+        {/*    paddingHorizontal: theme.sizes.radius / 2,*/}
+        {/*  }}*/}
+        {/*  columnWrapperStyle={{*/}
+        {/*    justifyContent: 'space-between',*/}
+        {/*  }}*/}
+        {/*  showsVerticalScrollIndicator={false}*/}
+        {/*  renderItem={MainSubMenuCardView}*/}
+        {/*/>*/}
       </Block>
     </>
   );

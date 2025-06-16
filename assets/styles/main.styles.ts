@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginVertical: theme.sizes.radius,
     marginHorizontal: theme.sizes.base * 1.2,
-    marginBottom: theme.sizes.font * 2,
+    marginBottom: theme.sizes.base,
   },
   tab: {
     marginRight: theme.sizes.base,

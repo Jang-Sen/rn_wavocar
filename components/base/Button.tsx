@@ -1,41 +1,79 @@
 import React from 'react';
-import {
-  StyleProp,
-  StyleSheet,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  ViewStyle,
-} from 'react-native';
-import { theme } from '@/constants';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import {theme} from "@/constants";
 
-interface Props extends TouchableOpacityProps {
-  opacity?: number;
-  color?: string;
-  style?: StyleProp<ViewStyle>;
-  children?: React.ReactNode;
-}
+const Button = props => {
+  const {
+    style,
+    opacity,
+    gradient,
+    color,
+    startColor,
+    endColor,
+    end,
+    start,
+    locations,
+    shadow,
+    children,
+    ...rest
+  } = props;
 
-export default function Button({ style, opacity, color, children, ...rest }: Props) {
   const buttonStyles = [
     styles.button,
-    color && styles[color as keyof typeof styles],
-    color && !styles[color as keyof typeof styles] && { backgroundColor: color },
+    shadow && styles.shadow,
+    color && styles[color], // predefined styles colors for backgroundColor
+    color && !styles[color] && { backgroundColor: color }, // custom backgroundColor
     style,
   ];
+
+  if (gradient) {
+    return (
+      <TouchableOpacity style={buttonStyles} activeOpacity={opacity} {...rest}>
+        <LinearGradient
+          start={start}
+          end={end}
+          locations={locations}
+          style={buttonStyles}
+          colors={[startColor, endColor]}
+        >
+          {children}
+        </LinearGradient>
+      </TouchableOpacity>
+    );
+  }
 
   return (
     <TouchableOpacity style={buttonStyles} activeOpacity={opacity || 0.8} {...rest}>
       {children}
     </TouchableOpacity>
   );
-}
+};
+
+Button.defaultProps = {
+  startColor: theme.colors.primary,
+  endColor: theme.colors.secondary,
+  start: { x: 0, y: 0 },
+  end: { x: 1, y: 1 },
+  locations: [0.1, 0.9],
+  opacity: 0.8,
+  color: theme.colors.white,
+};
+
+export default Button;
 
 const styles = StyleSheet.create({
   button: {
     borderRadius: theme.sizes.radius,
     height: theme.sizes.base * 3,
     justifyContent: 'center',
-    marginVertical: theme.sizes.margin,
+    marginVertical: theme.sizes.padding / 3,
+  },
+  shadow: {
+    shadowColor: theme.colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
   },
   accent: { backgroundColor: theme.colors.accent },
   primary: { backgroundColor: theme.colors.primary },
@@ -44,5 +82,7 @@ const styles = StyleSheet.create({
   black: { backgroundColor: theme.colors.black },
   white: { backgroundColor: theme.colors.white },
   gray: { backgroundColor: theme.colors.gray },
-  gray2: { backgroundColor: theme.colors.whiteGray },
+  gray2: { backgroundColor: theme.colors.gray2 },
+  gray3: { backgroundColor: theme.colors.gray3 },
+  gray4: { backgroundColor: theme.colors.gray4 },
 });

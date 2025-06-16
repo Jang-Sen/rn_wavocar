@@ -1,5 +1,10 @@
-import axios from 'axios';
+import axios, { InternalAxiosRequestConfig } from 'axios';
 import appConfig from '@/config/app.config';
+import { useAuthStore } from '@/store/auth.store';
+
+interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
+  _retry?: boolean;
+}
 
 const axiosInstance = axios.create({
   baseURL: appConfig.apiPrefix,
@@ -10,12 +15,19 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.response.use(
-  response => response,
-  error => {
-    console.error('API Error: ', error.response?.data || error.message);
+  config => {
+    const token = useAuthStore.getState().accessToken;
+    console.log('토큰 발급: ', token);
+    if (token) config.headers.Authorization = `Bearer ${token}`;
 
-    return Promise.reject(error);
+    return config;
   },
+  // response => response,
+  // error => {
+  //   console.error('API Error: ', error.response?.data || error.message);
+  //
+  //   return Promise.reject(error);
+  // },
 );
 
 export default axiosInstance;

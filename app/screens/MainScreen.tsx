@@ -44,7 +44,7 @@ const MainScreen: React.FC = () => {
   };
 
   return (
-    <Block style={{ marginTop: 50 }}>
+    <Block style={{ marginTop: 15 }}>
       <HeaderMenus title="WAVOCAR" />
 
       <Block flex row style={styles.tabs}>

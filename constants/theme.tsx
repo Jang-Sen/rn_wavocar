@@ -7,6 +7,7 @@ const colors = {
   black: '#323643',
   white: '#FFFFFF',
   gray: '#9DA3B4',
+  gray2: '#C5CCD6',
   whiteGray: '#C5CCD6',
   active: '#007BFA',
   carPrice: '#0062a6',
