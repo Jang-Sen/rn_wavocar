@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useLogin } from '@/hooks/auth/useLogin';
 import { Register } from '@/@types/auth';
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   const { control, handleSubmit, watch } = useForm();
   const [isActive, setIsActive] = useState(false);
   const { mutate: login, isPending, isError } = useLogin();
@@ -103,31 +103,20 @@ export default function LoginScreen() {
             {isPending ? (
               <ActivityIndicator size="small" color="white" />
             ) : (
-              <Text bold white center>
+              <Text bold color={theme.colors.black} center>
                 로그인
               </Text>
             )}
           </Button>
 
-          <Block flex>
-            <Button
-              style={styles.forgetEmail}
-              // onPress={() => navigation.navigate("Forgot")}
-            >
-              <Text gray caption center style={{ textDecorationLine: 'underline' }}>
-                이메일을 잊어버리셨나요?
-              </Text>
-            </Button>
-
-            <Button
-              style={styles.forgetPassword}
-              // onPress={() => navigation.navigate("Forgot")}
-            >
-              <Text gray caption center style={{ textDecorationLine: 'underline' }}>
-                비밀번호를 잊어버리셨나요?
-              </Text>
-            </Button>
-          </Block>
+          <Button
+            style={styles.forgotPassword}
+            onPress={() => navigation.navigate('forgotPassword')}
+          >
+            <Text gray caption center style={{ textDecorationLine: 'underline' }}>
+              비밀번호를 잊어버리셨나요?
+            </Text>
+          </Button>
         </Block>
       </Block>
     </KeyboardAvoidingView>
@@ -216,11 +205,7 @@ const styles = StyleSheet.create({
   hasErrors: {
     borderBottomColor: theme.colors.accent,
   },
-  forgetEmail: {
-    marginVertical: theme.sizes.radius,
-    marginBottom: 1,
-  },
-  forgetPassword: {
+  forgotPassword: {
     marginVertical: theme.sizes.radius,
   },
 });

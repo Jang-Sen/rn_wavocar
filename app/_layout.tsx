@@ -19,6 +19,8 @@ import CarList from '@/components/car/CarList';
 import LoginScreen from '@/app/screens/auth/LoginScreen';
 import RegisterScreen from '@/app/screens/auth/RegisterScreen';
 import IntroScreen from '@/app/screens/IntroScreen';
+import ForgotPassword from '@/app/screens/auth/ForgotPassword';
+import ResetPassword from '@/app/screens/auth/ResetPassword';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -85,10 +87,12 @@ export default function RootLayout() {
           <Drawer.Screen
             name="register"
             options={{
-              title: '약관 동의',
+              title: '회원 가입',
             }}
             component={RegisterScreen}
           />
+          <Drawer.Screen name="forgotPassword" component={ForgotPassword} />
+          <Drawer.Screen name="resetPassword" component={ResetPassword} />
           <Drawer.Screen name="infinite" options={{ title: '무한 스크롤' }} component={CarList} />
           <Drawer.Screen
             name="history"

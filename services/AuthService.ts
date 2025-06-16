@@ -1,4 +1,12 @@
-import { getInfo, login, refreshToken, register } from '@/api/auth';
+import {
+  forgotPassword,
+  getInfo,
+  login,
+  refreshToken,
+  register,
+  validationEmail,
+  verificationEmail,
+} from '@/api/auth';
 import { Login, Register } from '@/@types/auth';
 
 const authService = {
@@ -7,6 +15,15 @@ const authService = {
   },
   register: async (data: Register) => {
     return await register(data);
+  },
+  forgot_password: async ({ email }: any) => {
+    return await forgotPassword({ email });
+  },
+  verification_email: async ({ email }: any) => {
+    return await verificationEmail({ email });
+  },
+  validation_email: async ({ email, code }: any) => {
+    return await validationEmail({ email, code });
   },
   getInfo: async () => {
     return await getInfo();

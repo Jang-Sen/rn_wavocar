@@ -14,6 +14,24 @@ export const register = async (data: Register) => {
   return response.data;
 };
 
+export const forgotPassword = async ({ email }: any) => {
+  const response = await axiosInstance.post(endpointConfig.auth.forgot_password, { email });
+
+  return response.data;
+};
+
+export const verificationEmail = async ({ email }: any) => {
+  const response = await axiosInstance.post(endpointConfig.auth.verification_email, { email });
+
+  return response.data;
+};
+
+export const validationEmail = async ({ email, code }: any) => {
+  const response = await axiosInstance.post(endpointConfig.auth.validation_email, { email, code });
+
+  return response.data;
+};
+
 export const getInfo = async () => {
   const response = await axiosInstance.get(endpointConfig.auth.getInfo);
 
