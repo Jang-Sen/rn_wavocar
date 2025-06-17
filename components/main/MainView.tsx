@@ -35,7 +35,7 @@ const items3 = [
 const MainView: React.FC = () => {
   return (
     <>
-      <Block flex row style={{ paddingHorizontal: theme.sizes.base }}>
+      <Block flex style={{ paddingHorizontal: theme.sizes.base }}>
         <FlatList
           data={items}
           keyExtractor={item => item.title}
@@ -49,36 +49,14 @@ const MainView: React.FC = () => {
           columnWrapperStyle={{
             justifyContent: 'space-between',
             margin: theme.sizes.caption,
-            // height: height / 5.7,
+            marginVertical: 1,
           }}
           showsVerticalScrollIndicator={false}
           renderItem={FirstMenuCardView}
         />
-        {/*{items.map((item, index) => (*/}
-        {/*  <Block key={index}>*/}
-        {/*    <Block>*/}
-        {/*      <TouchableOpacity>*/}
-        {/*        <Card style={styles.view}>*/}
-        {/*          <Text bold title>*/}
-        {/*            {item.title}*/}
-        {/*          </Text>*/}
-        {/*          <Text semibold color={theme.colors.gray} caption>*/}
-        {/*            {item.description}*/}
-        {/*          </Text>*/}
-        {/*          <Block style={{ alignItems: 'flex-end', marginTop: 5 }}>*/}
-        {/*            <Image*/}
-        {/*              source={item.icon}*/}
-        {/*              style={{ width: 60, height: 60, resizeMode: 'contain' }}*/}
-        {/*            />*/}
-        {/*          </Block>*/}
-        {/*        </Card>*/}
-        {/*      </TouchableOpacity>*/}
-        {/*    </Block>*/}
-        {/*  </Block>*/}
-        {/*))}*/}
       </Block>
 
-      <Block flex row style={{ paddingHorizontal: theme.sizes.base }}>
+      <Block flex style={{ paddingHorizontal: theme.sizes.base }}>
         <FlatList
           data={items2}
           keyExtractor={item => item.title}
@@ -93,31 +71,9 @@ const MainView: React.FC = () => {
           showsVerticalScrollIndicator={false}
           renderItem={data => MainMenuCardView(data.item, true)}
         />
-        {/*{items2.map((item, index) => (*/}
-        {/*  <Block key={index}>*/}
-        {/*    <Block>*/}
-        {/*      <TouchableOpacity>*/}
-        {/*        <Card style={styles.view2}>*/}
-        {/*          <Text bold title>*/}
-        {/*            {item.title}*/}
-        {/*          </Text>*/}
-        {/*          <Text semibold color={theme.colors.gray} caption>*/}
-        {/*            {item.description}*/}
-        {/*          </Text>*/}
-        {/*          <Block style={{ alignItems: 'flex-end', marginTop: 3 }}>*/}
-        {/*            <Image*/}
-        {/*              source={item.icon}*/}
-        {/*              style={{ width: 36, height: 36, resizeMode: 'contain' }}*/}
-        {/*            />*/}
-        {/*          </Block>*/}
-        {/*        </Card>*/}
-        {/*      </TouchableOpacity>*/}
-        {/*    </Block>*/}
-        {/*  </Block>*/}
-        {/*))}*/}
       </Block>
 
-      <Block flex row style={{ paddingHorizontal: theme.sizes.base, marginBottom: 10 }}>
+      <Block flex style={{ paddingHorizontal: theme.sizes.base, marginBottom: 10 }}>
         <FlatList
           data={items3}
           keyExtractor={item => item.title}
@@ -132,20 +88,6 @@ const MainView: React.FC = () => {
           showsVerticalScrollIndicator={false}
           renderItem={data => MainMenuCardView(data.item, false)}
         />
-        {/*<FlatList*/}
-        {/*  data={items3}*/}
-        {/*  keyExtractor={item => item.title}*/}
-        {/*  numColumns={4}*/}
-        {/*  contentContainerStyle={{*/}
-        {/*    paddingVertical: theme.sizes.radius,*/}
-        {/*    paddingHorizontal: theme.sizes.radius / 2,*/}
-        {/*  }}*/}
-        {/*  columnWrapperStyle={{*/}
-        {/*    justifyContent: 'space-between',*/}
-        {/*  }}*/}
-        {/*  showsVerticalScrollIndicator={false}*/}
-        {/*  renderItem={MainSubMenuCardView}*/}
-        {/*/>*/}
       </Block>
     </>
   );

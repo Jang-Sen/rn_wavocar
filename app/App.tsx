@@ -3,7 +3,7 @@ import { useAuthStore } from '@/store/auth.store';
 import MainScreen from '@/app/screens/MainScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import authService from '@/services/AuthService';
-import AuthNavigator from '@/navigator/AuthNavigator';
+import AuthenticatedNavigator from '@/navigator/Authenticated.navigator';
 
 const queryClient = new QueryClient();
 
@@ -23,7 +23,7 @@ function InitAuth() {
 
   if (isLoading) return null;
 
-  return useAuthStore.getState().isAuthenticated ? <MainScreen /> : <AuthNavigator />;
+  return useAuthStore.getState().isAuthenticated ? <MainScreen /> : <AuthenticatedNavigator />;
 }
 
 export default function App() {

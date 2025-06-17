@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { ScrollView, TouchableOpacity } from 'react-native';
+import { FlatList, ScrollView, TouchableOpacity } from 'react-native';
 import { theme } from '@/constants';
 import { Block, Text } from '@/components/base';
 import MainCardView from '@/components/main/MainCardView';
@@ -51,49 +51,37 @@ const MainScreen: React.FC = () => {
         {tabs.map(tab => renderTab(tab))}
       </Block>
       {active === '이동' && (
-        <ScrollView
+        <FlatList
+          data={[]}
+          renderItem={null}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: theme.sizes.base }}
-        >
-          <MainView />
-          {/*{renderDestinations()}*/}
-          {cars?.data && (
-            <MainCardView cars={cars?.data} title={'새 차를 빌리고 싶을 땐, 신차장기플랜!'} />
-          )}
-          <MainFuelView title={'한 번쯤 타보고 싶던 그 차'} activeFuel={fuel} setFuel={setFuel} />
-          {/*{renderRecommended()}*/}
-          {/*{renderRecommended()}*/}
-        </ScrollView>
-
+          ListHeaderComponent={
+            <>
+              <MainView />
+              {cars?.data && (
+                <MainCardView cars={cars?.data} title={'새 차를 빌리고 싶을 땐, 신차장기플랜!'} />
+              )}
+              <MainFuelView
+                title={'한 번쯤 타보고 싶던 그 차'}
+                activeFuel={fuel}
+                setFuel={setFuel}
+              />
+            </>
+          }
+        />
         // <ScrollView
-        //     showsVerticalScrollIndicator={false}
-        //     style={{paddingVertical: theme.sizes.base * 2}}
+        //   showsVerticalScrollIndicator={false}
+        //   contentContainerStyle={{ paddingBottom: theme.sizes.base }}
         // >
-        //     <Block flex={false} row space="between" style={styles.categories}>
-        //         {cars?.data?.map((car, index) => (
-        //             <TouchableOpacity
-        //                 key={index}
-        //                 // onPress={() => navigation.navigate("Explore", {category})}
-        //             >
-        //                 <Card center middle shadow style={styles.category}>
-        //                     <Badge
-        //                         margin={[0, 0, 15]}
-        //                         size={50}
-        //                         color="rgba(41,216,143,0.20)"
-        //                     >
-        //                         <Image
-        //                             source={car.carImgs === null ? 'https://png.pngtree.com/png-vector/20190628/ourmid/pngtree-empty-box-icon-for-your-project-png-image_1521417.jpg' : car.carImgs}/>
-        //                     </Badge>
-        //                     <Text medium height={20}>
-        //                         {car.carName}
-        //                     </Text>
-        //                     {/*<Text gray caption>*/}
-        //                     {/*    {car.count} products*/}
-        //                     {/*</Text>*/}
-        //                 </Card>
-        //             </TouchableOpacity>
-        //         ))}
-        //     </Block>
+        //   <MainView />
+        //   {/*{renderDestinations()}*/}
+        //   {cars?.data && (
+        //     <MainCardView cars={cars?.data} title={'새 차를 빌리고 싶을 땐, 신차장기플랜!'} />
+        //   )}
+        //   <MainFuelView title={'한 번쯤 타보고 싶던 그 차'} activeFuel={fuel} setFuel={setFuel} />
+        //   {/*{renderRecommended()}*/}
+        //   {/*{renderRecommended()}*/}
         // </ScrollView>
       )}
       {active === '숙박' && (
