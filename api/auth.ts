@@ -20,6 +20,15 @@ export const forgotPassword = async ({ email }: any) => {
   return response.data;
 };
 
+export const resetPassword = async ({ password, token }: any) => {
+  const response = await axiosInstance.post(endpointConfig.auth.reset_password, {
+    password,
+    token,
+  });
+
+  return response.data;
+};
+
 export const verificationEmail = async ({ email }: any) => {
   const response = await axiosInstance.post(endpointConfig.auth.verification_email, { email });
 

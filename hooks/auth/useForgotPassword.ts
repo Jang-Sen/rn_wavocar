@@ -12,3 +12,15 @@ export const useForgotPassword = () => {
     },
   });
 };
+
+export const useResetPassword = () => {
+  return useMutation({
+    mutationFn: authService.reset_password,
+    onSuccess: data => {
+      console.log('✅ 비밀번호 변경 완료');
+    },
+    onError: error => {
+      console.error('❌ 비밀번호 변경 API 에러: ', error.message);
+    },
+  });
+};

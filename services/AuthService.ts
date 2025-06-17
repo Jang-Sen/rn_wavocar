@@ -4,6 +4,7 @@ import {
   login,
   refreshToken,
   register,
+  resetPassword,
   validationEmail,
   verificationEmail,
 } from '@/api/auth';
@@ -18,6 +19,9 @@ const authService = {
   },
   forgot_password: async ({ email }: any) => {
     return await forgotPassword({ email });
+  },
+  reset_password: async ({ password, token }: any) => {
+    return await resetPassword({ password, token });
   },
   verification_email: async ({ email }: any) => {
     return await verificationEmail({ email });
